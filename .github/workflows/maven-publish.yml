@@ -33,3 +33,5 @@ jobs:
 
       - name: Publish to GitHub Packages
         run: mvn -B deploy -s ~/.m2/settings.xml
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
