@@ -8,11 +8,6 @@
 
 name: MKPL CI/CD with java maven
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
   build:
