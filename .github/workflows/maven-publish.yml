@@ -25,12 +25,6 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file pom.xml
 
-      - name: Update Maven settings.xml with token
-        run: |
-          mkdir -p ~/.m2
-          cp ${{ github.workspace }}/settings.xml ~/.m2/settings.xml
-          sed -i 's|<password>.*</password>|<password>${{ secrets.GITHUB_TOKEN }}</password>|g' ~/.m2/settings.xml
-
       - name: Publish to GitHub Packages
         run: mvn -B deploy -s ~/.m2/settings.xml
         env:
