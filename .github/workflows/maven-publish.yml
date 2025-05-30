@@ -29,6 +29,5 @@ jobs:
           cp ${{ github.workspace }}/settings.xml ~/.m2/settings.xml
           sed -i 's|<password>.*</password>|<password>${{ secrets.GITHUB_TOKEN }}</password>|g' ~/.m2/settings.xml
 
-
       - name: Publish to GitHub Packages
         run: mvn -B deploy -s ~/.m2/settings.xml
