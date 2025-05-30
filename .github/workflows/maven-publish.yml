@@ -19,6 +19,8 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+          server-id: github
+          settings-path: ${{ github.workspace }}
       - name: Build with Maven
         run: mvn -B package --file pom.xml
 
@@ -29,6 +31,6 @@ jobs:
       #     cp path/to/your/settings.xml ~/.m2/settings.xml
 
       - name: Publish to GitHub Packages
-        run: mvn -B deploy -DskipTests
+        run: mvn -B deploy -s $GITHUB.WORKSPACE/settings.xml
         env:
           GITHUB_TOKEN: ${{ github.token }}
