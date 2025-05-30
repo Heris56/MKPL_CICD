@@ -18,6 +18,11 @@
      <name>github package test</name>
      <url>https://maven.pkg.github.com/Heris56/MKPL_CICD</url>
    </repository>
+   <snapshotRepository> 
+      <id>github</id>
+      <name>github package test snapshots</name>
+      <url>https://maven.pkg.github.com/Heris56/MKPL_CICD</url>
+    </snapshotRepository>
 </distributionManagement>
   
   <properties>
