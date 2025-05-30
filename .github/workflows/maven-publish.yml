@@ -1,0 +1,34 @@
+name: Maven Publish
+
+on:
+  pull_request:
+    branches: [ "main" ]
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
+
+      # Langkah untuk konfigurasi Maven (jika diperlukan, misalnya settings.xml)
+      # - name: Configure Maven
+      #   run: |
+      #     mkdir -p ~/.m2
+      #     cp path/to/your/settings.xml ~/.m2/settings.xml
+
+      - name: Publish to GitHub Packages
+        run: mvn -B deploy -DskipTests
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
