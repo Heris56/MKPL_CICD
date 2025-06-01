@@ -1,10 +1,10 @@
 name: Publish/deploy maven
 
 on:
-  release:
-    type: [created]
   pull_request:
     branches: ["main"]
+  release:
+    type: [created]
 
 jobs:
 build:
